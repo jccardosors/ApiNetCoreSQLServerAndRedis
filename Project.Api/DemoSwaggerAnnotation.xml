@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Project.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Project.Api.Controllers.AutenticateController.Autenticate(System.String,System.String)">
+            <summary>
+            Endpoint utilizado para gerar token de autenticação nesta Api
+            </summary>
+            <param name="email"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Api.Controllers.ConsolidatedReportController.GenerateReport(Project.Application.ViewModels.ConsolidatedReportVM)">
+            <summary>
+            Endpoint utilizado para gerar dados para o relatório consolidado de lançamentos
+            </summary>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Api.Controllers.EntryController.Get">
+            <summary>
+            Endpoint utilizado para retornar TODOS os lançamentos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Api.Controllers.EntryController.GetItem(System.Int32)">
+            <summary>
+            Endpoint utilizado para retornar APENAS UM lançamento
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Api.Controllers.EntryController.Add(Project.Application.ViewModels.EntryVM)">
+            <summary>
+            Endpoint utilizado para adicionar um NOVO lançamento
+            </summary>
+            <param name="entryRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Api.Controllers.EntryController.Update(Project.Application.ViewModels.EntryVM)">
+            <summary>
+            Endpoint utilizado para atualizar um lançamento EXISTENTE
+            </summary>
+            <param name="entryRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Api.Controllers.EntryController.Delete(System.Int32)">
+            <summary>
+            Endpoint utilizado para EXCLUIR um lançamento
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

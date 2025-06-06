@@ -1,0 +1,55 @@
+version: '3.4'
+name: principal-container
+
+services:
+  project.api:
+    #image: ${DOCKER_REGISTRY-}projectapi
+    container_name: api-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - "8080:8080"
+        - "8081:8081"
+    depends_on:
+      - sqlserver
+      - redis
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Redis__ConnectionString=redis:6379
+    networks:
+      - apisqlnetwork
+    restart: on-failure
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: db-container
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password@12345
+    ports:
+      - "1433:1433"
+    volumes:
+     - sqlvolume:/var/opt/mssql
+    networks:
+      - apisqlnetwork
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes", "--timeout", "0"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - apisqlnetwork
+
+networks:
+  apisqlnetwork:
+
+volumes:
+  sqlvolume:
+
