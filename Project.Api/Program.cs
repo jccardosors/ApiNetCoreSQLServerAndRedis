@@ -115,9 +115,9 @@ app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "api Teste v
 //}
 
 {
-    var scope = app.Services.CreateScope();
-    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    dbContext.Database.Migrate();
+    //var scope = app.Services.CreateScope();
+    //var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    //dbContext.Database.Migrate();
     //dbContext.Database.EnsureCreated();
 }
 
