@@ -111,7 +111,13 @@ var app = builder.Build();
 //{
 app.UseSwagger();
 // app.UseSwaggerUI();
-app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "api Teste v1"));
+app.UseSwaggerUI(c =>
+{
+    string swaggerJsonBasePath = string.IsNullOrWhiteSpace(c.RoutePrefix) ? "." : "..";
+
+    c.SwaggerEndpoint($"{swaggerJsonBasePath}/swagger/v1/swagger.json", "api Teste v1");
+    });
+
 //}
 
 {
